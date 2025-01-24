@@ -8,8 +8,8 @@ int main() {
     PIO pio = pio0;
     uint sm = configurar_matriz(pio);
 
-    RGB_cod cor0 = obter_cor_por_parametro_RGB(0, 0, 0);
-    RGB_cod cor1 = obter_cor_por_parametro_RGB(0, 0, 255);
+    RGB_cod cor0 = cor_24bit_para_3double(0, 0, 0);
+    RGB_cod cor1 = cor_24bit_para_3double(0, 0, 255);
 
     Matriz_leds_config orig = {
         {cor1, cor1, cor1, cor1, cor1},
