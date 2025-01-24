@@ -40,3 +40,29 @@ uint configurar_matriz(PIO pio){
 
     return sm;
 }
+
+void imprimir_desenho(Matriz_leds_config configuracao, PIO pio, uint sm){
+    for (int contadorLinha = 4; contadorLinha >= 0; contadorLinha--){
+        if(contadorLinha % 2){
+            for (int contadorColuna = 0; contadorColuna < 5; contadorColuna ++){
+                uint32_t valor_cor_binario = gerar_binario_cor(
+                    configuracao[contadorLinha][contadorColuna].red,
+                    configuracao[contadorLinha][contadorColuna].green,
+                    configuracao[contadorLinha][contadorColuna].blue
+                );
+
+                pio_sm_put_blocking(pio, sm, valor_cor_binario);
+            }
+        }else{
+            for (int contadorColuna = 4; contadorColuna >= 0; contadorColuna --){
+                uint32_t valor_cor_binario = gerar_binario_cor(
+                    configuracao[contadorLinha][contadorColuna].red,
+                    configuracao[contadorLinha][contadorColuna].green,
+                    configuracao[contadorLinha][contadorColuna].blue
+                );
+
+                pio_sm_put_blocking(pio, sm, valor_cor_binario);
+            }
+        }
+    }
+}
