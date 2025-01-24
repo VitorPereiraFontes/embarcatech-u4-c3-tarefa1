@@ -3,8 +3,9 @@
 #include "matriz_leds.h"
 
 int main() {
-    PIO pio = pio0;
+    stdio_init_all();
 
+    PIO pio = pio0;
     uint sm = configurar_matriz(pio);
 
     RGB_cod cor0 = obter_cor_por_parametro_RGB(0, 0, 0);

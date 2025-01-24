@@ -25,9 +25,6 @@ uint configurar_matriz(PIO pio) {
     // Define o clock para 128 MHz, facilitando a divisão pelo clock
     bool ok = set_sys_clock_khz(128000, false);
 
-    // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
-    stdio_init_all();
-
     printf("iniciando a transmissão PIO");
     if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
 
