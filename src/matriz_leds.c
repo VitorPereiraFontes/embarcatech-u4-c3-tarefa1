@@ -10,3 +10,13 @@
 
 // Pino que realizará a comunicação do microcontrolador com a matriz
 #define OUT_PIN 7
+
+// Gera o binário que controla a cor de cada célula do LED
+uint32_t gerar_binario_cor(double red, double green, double blue)
+{
+  unsigned char RED, GREEN, BLUE;
+  RED = red * 255.0;
+  GREEN = green * 255.0;
+  BLUE = blue * 255.0;
+  return (GREEN << 24) | (RED << 16) | (BLUE << 8);
+}
