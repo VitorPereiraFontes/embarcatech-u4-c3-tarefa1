@@ -20,3 +20,23 @@ uint32_t gerar_binario_cor(double red, double green, double blue)
   BLUE = blue * 255.0;
   return (GREEN << 24) | (RED << 16) | (BLUE << 8);
 }
+
+uint configurar_matriz(PIO pio){
+    bool ok;
+
+    // Define o clock para 128 MHz, facilitando a divisão pelo clock
+    ok = set_sys_clock_khz(128000, false);
+
+    // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
+    stdio_init_all();
+
+    printf("iniciando a transmissão PIO");
+    if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
+
+    //configurações da PIO
+    uint offset = pio_add_program(pio, &pio_matrix_program);
+    uint sm = pio_claim_unused_sm(pio, true);
+    pio_matrix_program_init(pio, sm, offset, OUT_PIN);
+
+    return sm;
+}
