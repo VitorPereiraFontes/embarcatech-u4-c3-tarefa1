@@ -1,6 +1,8 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
+
 #include "matriz_leds.h"
+#include "animacoes/fogos_artificio/fogos_artificio.h"
 
 int main() {
     stdio_init_all();
@@ -26,19 +28,20 @@ int main() {
     double i50 = 0.5;
     double i20 = 0.2;
 
-    double brightness = i20;
-    while (true) {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                RGB_cod c = orig[i][j];
-                c.red *= brightness;
-                c.green *= brightness;
-                c.blue *= brightness;
-                display[i][j] = c;
-            }
-        }
-        imprimir_desenho(display, pio, sm);
-        brightness += 0.1;
-        sleep_ms(1000);
-    }
+    iniciar_animacao_fogos_artificio(pio, sm);
+
+    /* while (true) { */
+    /*     for (int i = 0; i < 5; i++) { */
+    /*         for (int j = 0; j < 5; j++) { */
+    /*             RGB_cod c = orig[i][j]; */
+    /*             c.red *= brightness; */
+    /*             c.green *= brightness; */
+    /*             c.blue *= brightness; */
+    /*             display[i][j] = c; */
+    /*         } */
+    /*     } */
+    /*     imprimir_desenho(display, pio, sm); */
+    /*     brightness += 0.1; */
+    /*     sleep_ms(1000); */
+    /* } */
 }
