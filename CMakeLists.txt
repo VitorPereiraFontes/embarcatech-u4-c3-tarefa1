@@ -35,7 +35,11 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(embarcatech-u4-c3-tarefa1 src/main.c src/matriz_leds.c )
+add_executable(embarcatech-u4-c3-tarefa1 
+    src/main.c 
+    src/matriz_leds.c
+    src/animacoes/fogos_artificio/fogos_artificio.c
+)
 
 pico_set_program_name(embarcatech-u4-c3-tarefa1 "embarcatech-u4-c3-tarefa1")
 pico_set_program_version(embarcatech-u4-c3-tarefa1 "0.1")
