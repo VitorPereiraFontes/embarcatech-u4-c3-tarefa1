@@ -104,4 +104,11 @@ void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
         {off,off,off,off,off},
         {off,off,off,off,off},
     };
+
+    Matriz_leds_config* animacao[11] = {&frame1,&frame2,&frame3,&frame4,&frame5,&frame6,&frame7,&frame8,&frame9,&frame10,&frame11};
+
+    for (int contador = 0; contador < 11; contador++){
+        imprimir_desenho(*(animacao[contador]), pio, sm);
+        sleep_ms(100); //100 ms ~~ 10 fps
+    }
 }
