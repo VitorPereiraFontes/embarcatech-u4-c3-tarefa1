@@ -1,18 +1,14 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
-#include "keypad.h"
-#include <FastLED.h>
 
-#define ROW_NUM    4
-#define COL_NUM    4
+// Definições para a matriz de LEDs
+#define NUM_LEDS 25   // Número total de LEDs na matriz 5x5
+#define DATA_PIN 16   // Pino de dados do WS2812
 
-#define NUM_LEDS 25  // Número total de LEDs na matriz 5x5
-
-// Definindo os pinos para os LEDs WS2812 (mapeie com seu hardware)
-#define DATA_PIN 16  // Pino de dados do WS2812
-
-CRGB leds[NUM_LEDS];  // Definindo a matriz de LEDs
+// Definições para o teclado matricial
+#define ROW_NUM 4
+#define COL_NUM 4
 
 // Mapeamento do teclado
 char keys[ROW_NUM][COL_NUM] = {
@@ -22,48 +18,111 @@ char keys[ROW_NUM][COL_NUM] = {
     {'*', '0', '#', 'D'}
 };
 
-// Definindo os pinos do teclado (ajuste conforme necessário)
+// Pinos de linhas e colunas do teclado
 int rowPins[ROW_NUM] = {2, 3, 4, 5};
 int colPins[COL_NUM] = {6, 7, 8, 9};
 
-// Inicializando o teclado matricial
-Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROW_NUM, COL_NUM);
+// Função para configurar os pinos do teclado
+void setup_keypad() {
+    for (int i = 0; i < ROW_NUM; i++) {
+        gpio_init(rowPins[i]);
+        gpio_set_dir(rowPins[i], GPIO_OUT);
+        gpio_put(rowPins[i], 1);  // Mantém a linha desativada inicialmente
+    }
 
-// Função para iniciar uma animação na matriz de LEDs
+    for (int i = 0; i < COL_NUM; i++) {
+        gpio_init(colPins[i]);
+        gpio_set_dir(colPins[i], GPIO_IN);
+        gpio_pull_up(colPins[i]);  // Habilita pull-up para as colunas
+    }
+}
+
+// Função para ler uma tecla pressionada
+char get_key() {
+    for (int row = 0; row < ROW_NUM; row++) {
+        // Ativa a linha atual
+        gpio_put(rowPins[row], 0);
+
+        for (int col = 0; col < COL_NUM; col++) {
+            // Verifica se a coluna está em nível baixo (tecla pressionada)
+            if (gpio_get(colPins[col]) == 0) {
+                // Aguarda enquanto a tecla está pressionada
+                while (gpio_get(colPins[col]) == 0);
+                gpio_put(rowPins[row], 1);  // Desativa a linha
+                return keys[row][col];
+            }
+        }
+
+        // Desativa a linha atual
+        gpio_put(rowPins[row], 1);
+    }
+
+    return 0;  // Nenhuma tecla pressionada
+}
+
+// Função para inicializar os LEDs WS2812 (em C puro)
+void setup_leds() {
+    gpio_init(DATA_PIN);
+    gpio_set_dir(DATA_PIN, GPIO_OUT);
+}
+
+// Função para enviar dados para os LEDs WS2812
+void send_led_data(uint32_t *leds, int num_leds) {
+    for (int i = 0; i < num_leds; i++) {
+        uint32_t color = leds[i];
+        for (int j = 23; j >= 0; j--) {
+            if (color & (1 << j)) {
+                // Envia "1" (código de tempo para WS2812)
+                gpio_put(DATA_PIN, 1);
+                sleep_us(0.8);
+                gpio_put(DATA_PIN, 0);
+                sleep_us(0.45);
+            } else {
+                // Envia "0"
+                gpio_put(DATA_PIN, 1);
+                sleep_us(0.4);
+                gpio_put(DATA_PIN, 0);
+                sleep_us(0.85);
+            }
+        }
+    }
+}
+
+// Função para executar uma animação nos LEDs
 void animacao_leds() {
-    for (int i = 0; i < NUM_LEDS; i++) {
-        leds[i] = CRGB::Black;  // Apaga todos os LEDs
-    }
-    FastLED.show();  // Atualiza os LEDs para apagar a matriz
+    uint32_t leds[NUM_LEDS] = {0};  // Matriz de LEDs, todos desligados
 
-    // Animação: Acende os LEDs em uma sequência
+    // Apaga todos os LEDs
+    send_led_data(leds, NUM_LEDS);
+
+    // Animação: Acende os LEDs em sequência
     for (int i = 0; i < NUM_LEDS; i++) {
-        leds[i] = CRGB::Red;  // Acende o LED na cor vermelha
-        FastLED.show();
+        leds[i] = 0xFF0000;  // Vermelho
+        send_led_data(leds, NUM_LEDS);
         sleep_ms(100);  // Espera 100ms entre os LEDs
-        leds[i] = CRGB::Black;  // Apaga o LED após a espera
+        leds[i] = 0x000000;  // Apaga o LED
     }
 
-    FastLED.show();  // Atualiza os LEDs para mostrar a sequência
+    send_led_data(leds, NUM_LEDS);  // Apaga todos os LEDs ao final
 }
 
 int main() {
     stdio_init_all();  // Inicializa a comunicação serial
-    FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, NUM_LEDS);  // Define os LEDs
+    setup_keypad();    // Configura os pinos do teclado
+    setup_leds();      // Configura os LEDs
 
-    while (true) {
-        char key = keypad.getKey();  // Lê a tecla pressionada
+    while (1) {
+        char key = get_key();  // Lê a tecla pressionada
 
         if (key) {  // Se uma tecla foi pressionada
             printf("Tecla pressionada: %c\n", key);
 
-            // Se a tecla '1' for pressionada, executa a animação
             if (key == '1') {
-                animacao_leds();  // Chama a função que executa a animação
+                animacao_leds();  // Executa a animação se a tecla '1' for pressionada
             }
         }
 
-        sleep_ms(100);  // Atraso para evitar leituras excessivas
+        sleep_ms(100);  // Delay para evitar leituras excessivas
     }
 
     return 0;
