@@ -13,10 +13,10 @@ uint configurar_matriz(PIO pio) {
     // Define o clock para 128 MHz, facilitando a divisão pelo clock
     bool ok = set_sys_clock_khz(128000, false);
 
-    printf("iniciando a transmissão PIO");
-    if (ok) printf("clock set to %ld\n", clock_get_hz(clk_sys));
+    printf("Clock rodando a %ldHz\n", clock_get_hz(clk_sys));
+    printf("Iniciando a transmissão PIO\n");
 
-    // configurações da PIO
+    // Configurações do PIO
     uint offset = pio_add_program(pio, &pio_matrix_program);
     uint sm = pio_claim_unused_sm(pio, true);
     pio_matrix_program_init(pio, sm, offset, LED_STRIP_PIN);
