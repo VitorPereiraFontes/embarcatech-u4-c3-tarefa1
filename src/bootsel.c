@@ -1,6 +1,10 @@
+#include <stdio.h>
+
+#include "pico/stdlib.h"
 #include "pico/bootrom.h"  // Biblioteca necessária para reiniciar o sistema
 
-// Função para reiniciar o Raspberry Pi Pico W e entrar no modo de gravação (bootloader)
+#include "bootsel.h"
+
 void check_reboot(char key) {
     if (key == '*') {  // Se a tecla '*' for pressionada
         printf("Tecla '*' pressionada! Reiniciando...\n");

@@ -7,8 +7,7 @@
 #include "matriz_leds.h"
 #include "buzzer.h"
 #include "keypad.h"
-
-#include "bootsel.c"
+#include "bootsel.h"
 
 #define NUM_LEDS 25     // Número total de LEDs na matriz 5x5
 #define LED_DATA_PIN 7  // Pino de dados do WS2812
