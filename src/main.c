@@ -1,23 +1,28 @@
+#include <stdio.h>
+
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 
-#include <stdio.h>
-
+#include "animacoes/animacoes.h"
 #include "matriz_leds.h"
 #include "buzzer.h"
+#include "keypad.h"
 
-#include "animacoes/animacoes.h"
-#include "animacao.c"
 #include "bootsel.c"
 
-#define BUZZER_PIN 10
+#define NUM_LEDS 25     // Número total de LEDs na matriz 5x5
+#define LED_DATA_PIN 7  // Pino de dados do WS2812
+#define BUZZER_PIN 10   // Pino de controle do buzzer
 
 static void aplicar_brilho(const Matriz_leds_config *src, double brightness, Matriz_leds_config *dest);
 
+// Função para inicializar os LEDs WS2812 (em C puro)
+static void setup_leds();
+
 int main() {
     stdio_init_all();
-    setup_keypad();    // Configura os pinos do teclado
-    setup_leds();      // Configura os LEDs
+    setup_keypad();  // Configura os pinos do teclado
+    setup_leds();    // Configura os LEDs
 
     Animacao anim_padrao = obter_anim_padrao();
 
@@ -140,4 +145,9 @@ static void aplicar_brilho(const Matriz_leds_config *src, double brightness, Mat
             (*dest)[i][j] = cor;
         }
     }
+}
+
+static void setup_leds() {
+    gpio_init(LED_DATA_PIN);
+    gpio_set_dir(LED_DATA_PIN, GPIO_OUT);
 }
