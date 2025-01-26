@@ -2,7 +2,7 @@
 #include "hardware/pio.h"
 
 #include "matriz_leds.h"
-#include "animacoes/fogos_artificio.h"
+#include "animacoes/animacoes.h"
 
 int main() {
     stdio_init_all();

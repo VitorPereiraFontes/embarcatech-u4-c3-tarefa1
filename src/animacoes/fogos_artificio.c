@@ -2,7 +2,7 @@
 #include "hardware/pio.h"
 
 #include "../matriz_leds.h"
-#include "fogos_artificio.h"
+#include "animacoes.h"
 
 void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
     RGB_cod off = {0,0,0};

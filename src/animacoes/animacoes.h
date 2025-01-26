@@ -1,5 +1,5 @@
-#ifndef _FOGOS_ARTIFICIO_H
-#define _FOGOS_ARTIFICIO_H
+#ifndef _ANIMACOES_H
+#define _ANIMACOES_H
 
 void iniciar_animacao_fogos_artificio(PIO pio, uint sm);
 
