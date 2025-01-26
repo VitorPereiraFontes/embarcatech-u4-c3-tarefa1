@@ -1,6 +1,7 @@
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
-#include "../../matriz_leds.h"
+
+#include "../matriz_leds.h"
 #include "fogos_artificio.h"
 
 void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
