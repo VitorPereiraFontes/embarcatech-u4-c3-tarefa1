@@ -32,6 +32,7 @@ int main() {
     Animacao animacoes[8];
     animacoes[0] = obter_anim_fogos_artificio();
     animacoes[1] = obter_anim_cobra();
+    animacoes[2] = obter_anim_coracao_pulsante();
     animacoes[3] = obter_anim_off();
     animacoes[4] = obter_anim_blue();
     animacoes[5] = obter_anim_red();
@@ -73,6 +74,10 @@ int main() {
             break;
 
             case '3':
+                printf("\nTrocando para a animação do coração pulsante...\n");
+                anim_atual = &animacoes[2];
+                contador = 0;
+                brilho = 1.0;
             break;
 
             case 'A':
