@@ -38,6 +38,8 @@ pico_sdk_init()
 add_executable(embarcatech-u4-c3-tarefa1
     src/main.c
     src/matriz_leds.c
+
+    src/animacoes/padrao.c
     src/animacoes/fogos_artificio.c
 )
 
