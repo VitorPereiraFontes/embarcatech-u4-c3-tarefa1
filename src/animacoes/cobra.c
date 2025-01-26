@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdio.h>
 
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
@@ -61,8 +60,6 @@ Animacao obter_anim_cobra() {
 
             CLAMP(x, 0, 4);
             CLAMP(y, 0, 4);
-
-            printf("a %d, (%d, %d)\n", i, x, y);
 
             (*frame)[y][x] = cor_cobra;
         }
