@@ -78,7 +78,6 @@ Ao iniciar, use o teclado para interagir:
 ```
 .
 ├── main.c                 // Programa principal
-├── animacao.c             // Controle das animações e LEDs
 ├── bootsel.{c,h}          // Funções de reinicialização
 ├── keypad.{c,h}           // Definição de tipos e funções do teclado matricial
 ├── matriz_leds.{c,h}      // Definição de tipos e funções da matriz de LEDs
