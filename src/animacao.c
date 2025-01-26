@@ -4,7 +4,7 @@
 
 // Definições para a matriz de LEDs
 #define NUM_LEDS 25   // Número total de LEDs na matriz 5x5
-#define DATA_PIN 16   // Pino de dados do WS2812
+#define DATA_PIN 7   // Pino de dados do WS2812
 
 // Definições para o teclado matricial
 #define ROW_NUM 4
@@ -19,8 +19,8 @@ char keys[ROW_NUM][COL_NUM] = {
 };
 
 // Pinos de linhas e colunas do teclado
-int rowPins[ROW_NUM] = {2, 3, 4, 5};
-int colPins[COL_NUM] = {6, 7, 8, 9};
+int rowPins[ROW_NUM] = {1, 2, 3, 4};
+int colPins[COL_NUM] = {8, 9, 16, 17};
 
 // Função para configurar os pinos do teclado
 void setup_keypad() {
@@ -104,26 +104,4 @@ void animacao_leds() {
     }
 
     send_led_data(leds, NUM_LEDS);  // Apaga todos os LEDs ao final
-}
-
-int main() {
-    stdio_init_all();  // Inicializa a comunicação serial
-    setup_keypad();    // Configura os pinos do teclado
-    setup_leds();      // Configura os LEDs
-
-    while (1) {
-        char key = get_key();  // Lê a tecla pressionada
-
-        if (key) {  // Se uma tecla foi pressionada
-            printf("Tecla pressionada: %c\n", key);
-
-            if (key == '1') {
-                animacao_leds();  // Executa a animação se a tecla '1' for pressionada
-            }
-        }
-
-        sleep_ms(100);  // Delay para evitar leituras excessivas
-    }
-
-    return 0;
 }
