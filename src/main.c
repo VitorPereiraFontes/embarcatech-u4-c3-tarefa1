@@ -31,6 +31,8 @@ int main() {
     animacoes[6] = obter_anim_green();
     animacoes[7] = obter_anim_white();
 
+    // TODO: resto das animações
+
     double brilho = 1.0;
     size_t contador = 0;
     const Animacao *anim_atual = &animacoes[1];
@@ -122,6 +124,8 @@ int main() {
         } else {
             contador = 0;
         }
+
+        // TODO: processar input do teclado
 
         imprimir_desenho(display, pio, sm);
         sleep_ms(anim_atual->duracao_frame_ms);
