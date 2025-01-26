@@ -1,3 +1,6 @@
+#ifndef _MATRIZ_LEDS_H
+#define _MATRIZ_LEDS_H
+
 /**
  * Pino que realizará a comunicação do microcontrolador com a matriz
  */
@@ -32,3 +35,5 @@ RGB_cod cor_24bit_para_3double(uint8_t red, uint8_t green, uint8_t blue);
  * Converte RGB em double para o formato e ordem utilizado pelo LED strip.
  */
 uint32_t cor_3double_para_ledstrip(double red, double green, double blue);
+
+#endif
