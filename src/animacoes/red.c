@@ -24,5 +24,7 @@ Animacao obter_anim_red() {
         .frames = animacao,
         .tamanho = 1,
         .duracao_frame_ms = 100,
+        .frame_buzzer = -1,
+        .freq_buzzer = 0,
     };
 }

@@ -75,16 +75,19 @@ Ao iniciar, use o teclado para interagir:
 
 ## Estrutura do projeto
 
+```
 .
 ├── main.c                 // Programa principal
 ├── animacao.c             // Controle das animações e LEDs
 ├── bootsel.c              // Funções de reinicialização
-├── matriz_leds.h          // Definição de tipos e funções da matriz
+├── matriz_leds.{c,h}      // Definição de tipos e funções da matriz
+├── buzzer.{c,h}           // Definição de tipos e funções do buzzer
 ├── animacoes/             // Diretório para animações adicionais
 │   ├── animacoes.h        // Declaração de animações
 │   └── ...                // Outras animações
 ├── CMakeLists.txt         // Configuração para compilação com CMake
 └── README.md              // Documentação do projeto
+```
 
 ## Componentes
 
@@ -96,4 +99,3 @@ Ao iniciar, use o teclado para interagir:
 - Vídeo: Fernando
 - Documentação (README): Caio
 - Animações: Todos
-- Animação com buzzer: ?

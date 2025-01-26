@@ -70,5 +70,7 @@ Animacao obter_anim_coracao_pulsante() {
         .frames = animacao,
         .tamanho = 5,  // Agora com 5 frames
         .duracao_frame_ms = 100,  // Duração de cada frame
+        .frame_buzzer = -1,
+        .freq_buzzer = 0,
     };
 }

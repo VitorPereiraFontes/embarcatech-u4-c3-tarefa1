@@ -38,6 +38,7 @@ pico_sdk_init()
 add_executable(embarcatech-u4-c3-tarefa1
     src/main.c
     src/matriz_leds.c
+    src/buzzer.c
 
     src/animacoes/padrao.c
     src/animacoes/fogos_artificio.c
@@ -74,6 +75,7 @@ target_include_directories(embarcatech-u4-c3-tarefa1 PRIVATE
 target_link_libraries(embarcatech-u4-c3-tarefa1
     hardware_pio
     hardware_clocks
+    hardware_pwm
 )
 
 pico_add_extra_outputs(embarcatech-u4-c3-tarefa1)
