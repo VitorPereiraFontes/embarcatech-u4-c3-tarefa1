@@ -20,18 +20,6 @@ void aplicar_brilho(const Matriz_leds_config *src, double brightness, Matriz_led
     }
 }
 
-/*
-#define PRINT_MATRIX(_m) \
-    for (int i = 0; i < 5; i++) { \
-        for (int j = 0; j < 5; j++) { \
-            RGB_cod c = _m[i][j]; \
-            printf("(%.2lf, %.2lf, %.2lf)  ", c.red, c.green, c.blue); \
-        } \
-        printf("\n"); \
-    } \
-    printf("\n");
-*/
-
 int main() {
     stdio_init_all();
 
@@ -39,14 +27,17 @@ int main() {
 
     Animacao animacoes[4];
     animacoes[0] = obter_anim_fogos_artificio();
+    animacoes[1] = obter_anim_cobra();
     // TODO: resto das animações
 
     double brilho = 1.0;
     size_t contador = 0;
-    const Animacao *anim_atual = &anim_padrao;
+    const Animacao *anim_atual = &animacoes[1];
 
     PIO pio = pio0;
     uint sm = configurar_matriz(pio);
+
+    sleep_ms(1000);
 
     while (true) {
         const Matriz_leds_config *frame_atual = &anim_atual->frames[contador];

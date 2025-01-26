@@ -11,5 +11,6 @@ typedef struct {
 
 Animacao obter_anim_padrao();
 Animacao obter_anim_fogos_artificio();
+Animacao obter_anim_cobra();
 
 #endif
