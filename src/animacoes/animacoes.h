@@ -7,6 +7,8 @@ typedef struct {
     const Matriz_leds_config *frames;
     size_t tamanho;
     uint32_t duracao_frame_ms;
+    int frame_buzzer;
+    uint32_t freq_buzzer;
 } Animacao;
 
 Animacao obter_anim_padrao();

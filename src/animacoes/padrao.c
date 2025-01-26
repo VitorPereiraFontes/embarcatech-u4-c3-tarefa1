@@ -23,5 +23,7 @@ Animacao obter_anim_padrao() {
         .frames = animacao,
         .tamanho = 1,
         .duracao_frame_ms = 200,
+        .frame_buzzer = -1,
+        .freq_buzzer = 0,
     };
 }

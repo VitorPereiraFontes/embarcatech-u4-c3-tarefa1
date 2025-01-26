@@ -99,5 +99,7 @@ Animacao obter_anim_cobra() {
         .frames = animacao,
         .tamanho = FRAME_COUNT,
         .duracao_frame_ms = 200, // 1s/(200ms/f) = 5fps
+        .frame_buzzer = -1,
+        .freq_buzzer = 0,
     };
 }

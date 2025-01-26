@@ -124,5 +124,7 @@ Animacao obter_anim_fogos_artificio() {
         .frames = animacao,
         .tamanho = 11,
         .duracao_frame_ms = 100,
+        .frame_buzzer = 3,
+        .freq_buzzer = 2090,
     };
 }

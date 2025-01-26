@@ -8,6 +8,7 @@ static void Buzzer_init_pwm(Buzzer *bz);
 
 void Buzzer_init(Buzzer *bz, uint pin) {
 	bz->pin = pin;
+    bz->is_playing = false;
 	Buzzer_init_pwm(bz);
 }
 
@@ -27,6 +28,15 @@ static void Buzzer_init_pwm(Buzzer *bz) {
 }
 
 void Buzzer_play(Buzzer *bz, uint32_t frequency, uint duration_ms) {
+    Buzzer_play_start(bz, frequency);
+	sleep_ms(duration_ms);
+    Buzzer_play_stop(bz);
+}
+
+void Buzzer_play_start(Buzzer *bz, uint32_t frequency) {
+    if (bz->is_playing)
+        return;
+
 	uint slice_num = pwm_gpio_to_slice_num(bz->pin);
 	uint32_t clock_freq = clock_get_hz(clk_sys);
 	uint32_t top = clock_freq / frequency - 1;
@@ -34,7 +44,14 @@ void Buzzer_play(Buzzer *bz, uint32_t frequency, uint duration_ms) {
 	pwm_set_wrap(slice_num, top);
 	pwm_set_gpio_level(bz->pin, top / 2);
 
-	sleep_ms(duration_ms);
+    bz->is_playing = true;
+}
+
+void Buzzer_play_stop(Buzzer *bz) {
+    if (!bz->is_playing)
+        return;
 
 	pwm_set_gpio_level(bz->pin, 0);
+
+    bz->is_playing = false;
 }

@@ -75,6 +75,7 @@ target_include_directories(embarcatech-u4-c3-tarefa1 PRIVATE
 target_link_libraries(embarcatech-u4-c3-tarefa1
     hardware_pio
     hardware_clocks
+    hardware_pwm
 )
 
 pico_add_extra_outputs(embarcatech-u4-c3-tarefa1)
