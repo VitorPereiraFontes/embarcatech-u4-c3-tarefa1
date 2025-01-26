@@ -35,10 +35,12 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(embarcatech-u4-c3-tarefa1 
-    src/main.c 
+add_executable(embarcatech-u4-c3-tarefa1
+    src/main.c
     src/matriz_leds.c
-    src/animacoes/fogos_artificio/fogos_artificio.c
+
+    src/animacoes/padrao.c
+    src/animacoes/fogos_artificio.c
 )
 
 pico_set_program_name(embarcatech-u4-c3-tarefa1 "embarcatech-u4-c3-tarefa1")
@@ -53,19 +55,18 @@ pico_enable_stdio_usb(embarcatech-u4-c3-tarefa1 1)
 
 # Add the standard library to the build
 target_link_libraries(embarcatech-u4-c3-tarefa1
-        pico_stdlib)
+    pico_stdlib
+)
 
 # Add the standard include files to the build
 target_include_directories(embarcatech-u4-c3-tarefa1 PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(embarcatech-u4-c3-tarefa1 
-        hardware_pio
-        hardware_clocks
-        
-        )
+target_link_libraries(embarcatech-u4-c3-tarefa1
+    hardware_pio
+    hardware_clocks
+)
 
 pico_add_extra_outputs(embarcatech-u4-c3-tarefa1)
-

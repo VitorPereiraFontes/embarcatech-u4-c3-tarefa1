@@ -1,9 +1,13 @@
+#include <string.h>
+
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
-#include "../../matriz_leds.h"
-#include "fogos_artificio.h"
 
-void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
+#include "animacoes.h"
+
+static Matriz_leds_config animacao[11];
+
+Animacao obter_anim_fogos_artificio() {
     RGB_cod off = {0,0,0};
     RGB_cod cor_bomba = cor_24bit_para_3double(100,102,105);
     RGB_cod cor_explosao = cor_24bit_para_3double(233,89,18);
@@ -15,7 +19,6 @@ void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
     RGB_cod cor_estrela_estagio_2 = cor_24bit_para_3double(221,3,255);
     RGB_cod cor_estrela_estagio_2_fade_1 = cor_24bit_para_3double(221 * 0.6,3 * 0.6,255 * 0.6);
     RGB_cod cor_estrela_estagio_2_fade_2 = cor_24bit_para_3double(221 * 0.3,3 * 0.3,255 * 0.3);
-
 
     Matriz_leds_config frame1 = {
         {off,off,off,off,off},
@@ -105,10 +108,21 @@ void iniciar_animacao_fogos_artificio(PIO pio, uint sm){
         {off,off,off,off,off},
     };
 
-    Matriz_leds_config* animacao[11] = {&frame1,&frame2,&frame3,&frame4,&frame5,&frame6,&frame7,&frame8,&frame9,&frame10,&frame11};
+    memcpy(animacao[0], frame1, sizeof(frame1));
+    memcpy(animacao[1], frame2, sizeof(frame2));
+    memcpy(animacao[2], frame3, sizeof(frame3));
+    memcpy(animacao[3], frame4, sizeof(frame4));
+    memcpy(animacao[4], frame5, sizeof(frame5));
+    memcpy(animacao[5], frame6, sizeof(frame6));
+    memcpy(animacao[6], frame7, sizeof(frame7));
+    memcpy(animacao[7], frame8, sizeof(frame8));
+    memcpy(animacao[8], frame9, sizeof(frame9));
+    memcpy(animacao[9], frame10, sizeof(frame10));
+    memcpy(animacao[10], frame11, sizeof(frame11));
 
-    for (int contador = 0; contador < 11; contador++){
-        imprimir_desenho(*(animacao[contador]), pio, sm);
-        sleep_ms(100); //100 ms ~~ 10 fps
-    }
+    return (Animacao) {
+        .frames = animacao,
+        .tamanho = 11,
+        .duracao_frame_ms = 100,
+    };
 }
