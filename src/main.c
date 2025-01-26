@@ -5,6 +5,8 @@
 
 #include "matriz_leds.h"
 #include "animacoes/animacoes.h"
+#include "animacao.c"
+#include "bootsel.c"
 
 void aplicar_brilho(const Matriz_leds_config *src, double brightness, Matriz_leds_config *dest) {
     for (int i = 0; i < 5; i++) {
@@ -22,6 +24,8 @@ void aplicar_brilho(const Matriz_leds_config *src, double brightness, Matriz_led
 
 int main() {
     stdio_init_all();
+    setup_keypad();    // Configura os pinos do teclado
+    setup_leds();      // Configura os LEDs
 
     Animacao anim_padrao = obter_anim_padrao();
 
@@ -40,13 +44,45 @@ int main() {
     sleep_ms(1000);
 
     while (true) {
+        char key = get_key();  // Lê a tecla pressionada
+
+        if (key) {  // Se uma tecla foi pressionada
+            printf("Tecla pressionada: %c\n", key);
+
+            check_reboot(key);
+
+            switch (key){
+            case '1':
+                printf("\nTrocando para a animação de fogos de artifício...\n");
+                anim_atual = &animacoes[0];
+                contador = 0;
+                break;
+
+            case '2':
+                printf("\nTrocando para a animação da cobra...\n");
+                anim_atual = &animacoes[1];
+                contador = 0;
+            break;
+
+            case '3':
+                animacao_leds();
+            break;
+
+            default:
+                break;
+            }
+        }
+
         const Matriz_leds_config *frame_atual = &anim_atual->frames[contador];
 
         Matriz_leds_config display;
         aplicar_brilho(frame_atual, brilho, &display);
 
-        if (contador < anim_atual->tamanho - 1)
+        if (contador < anim_atual->tamanho - 1) {
             contador++;
+        }else{
+            contador = 0;
+        }
 
         // TODO: processar input do teclado
 
