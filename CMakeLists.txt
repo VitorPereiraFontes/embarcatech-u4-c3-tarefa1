@@ -42,6 +42,12 @@ add_executable(embarcatech-u4-c3-tarefa1
     src/animacoes/padrao.c
     src/animacoes/fogos_artificio.c
     src/animacoes/cobra.c
+    src/animacoes/off.c
+    src/animacoes/blue.c
+    src/animacoes/red.c
+    src/animacoes/green.c
+    src/animacoes/white.c
+    src/animacoes/coracao_pulsante.c
 )
 
 pico_set_program_name(embarcatech-u4-c3-tarefa1 "embarcatech-u4-c3-tarefa1")

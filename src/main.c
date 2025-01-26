@@ -29,9 +29,16 @@ int main() {
 
     Animacao anim_padrao = obter_anim_padrao();
 
-    Animacao animacoes[4];
+    Animacao animacoes[8];
     animacoes[0] = obter_anim_fogos_artificio();
     animacoes[1] = obter_anim_cobra();
+    animacoes[2] = obter_anim_coracao_pulsante();
+    animacoes[3] = obter_anim_off();
+    animacoes[4] = obter_anim_blue();
+    animacoes[5] = obter_anim_red();
+    animacoes[6] = obter_anim_green();
+    animacoes[7] = obter_anim_white();
+
     // TODO: resto das animações
 
     double brilho = 1.0;
@@ -56,16 +63,50 @@ int main() {
                 printf("\nTrocando para a animação de fogos de artifício...\n");
                 anim_atual = &animacoes[0];
                 contador = 0;
-                break;
+                brilho = 1.0;
+            break;
 
             case '2':
                 printf("\nTrocando para a animação da cobra...\n");
                 anim_atual = &animacoes[1];
                 contador = 0;
+                brilho = 1.0;
             break;
 
             case '3':
-                animacao_leds();
+                printf("\nTrocando para a animação do coração pulsante...\n");
+                anim_atual = &animacoes[2];
+                contador = 0;
+                brilho = 1.0;
+            break;
+
+            case 'A':
+                anim_atual = &animacoes[3];
+                contador = 0;
+            break;
+
+            case 'B':
+                anim_atual = &animacoes[4];
+                contador = 0;
+                brilho = 1.0;
+            break;
+
+            case 'C':
+                anim_atual = &animacoes[5];
+                contador = 0;
+                brilho = 0.8;
+            break;
+
+            case 'D':
+                anim_atual = &animacoes[6];
+                contador = 0;
+                brilho = 0.5;
+            break;
+
+            case '#':
+                anim_atual = &animacoes[7];
+                contador = 0;
+                brilho = 0.2;
             break;
 
             default:
