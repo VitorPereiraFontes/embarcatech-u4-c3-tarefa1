@@ -56,14 +56,6 @@
     [ "pico:GP1", "$serialMonitor:TX", "", [] ],
     [ "pico:GP10", "bz1:2", "red", [ "h-226.85", "v-13.25" ] ],
     [ "pico:GND.3", "bz1:1", "black", [ "h-217.25", "v6.35" ] ],
-    [ "pico:GP1", "keypad1:R1", "#8f4814", [ "h0" ] ],
-    [ "keypad1:R2", "pico:GP2", "red", [ "v0" ] ],
-    [ "keypad1:R3", "pico:GP3", "orange", [ "v0" ] ],
-    [ "keypad1:R4", "pico:GP4", "gold", [ "v0" ] ],
-    [ "pico:GP8", "keypad1:C1", "green", [ "h0" ] ],
-    [ "pico:GP9", "keypad1:C2", "blue", [ "h0" ] ],
-    [ "pico:GP16", "keypad1:C3", "violet", [ "h23.06", "v-214.41", "h-249.45" ] ],
-    [ "keypad1:C4", "pico:GP17", "gray", [ "v19.2", "h230.1", "v195.21" ] ],
     [ "pico:3V3", "rgb1:VDD", "red", [ "h13.46", "v-118.45", "h-38.4", "v-38.4" ] ],
     [ "rgb6:VDD", "rgb1:VDD", "red", [ "h-19.2", "v57.6" ] ],
     [ "rgb6:VDD", "rgb11:VDD", "red", [ "h-19.2", "v-38.4" ] ],
@@ -139,7 +131,15 @@
     [ "rgb18:DOUT", "rgb19:DIN", "yellow", [ "h0", "v8.7", "h67.2", "v-19.2" ] ],
     [ "rgb19:DOUT", "rgb20:DIN", "yellow", [ "h-9.6", "v18.3", "h76.8", "v-28.8" ] ],
     [ "rgb20:DOUT", "rgb25:DIN", "yellow", [ "h-9.6", "v-20.1", "h38.4", "v-19.2" ] ],
-    [ "rgb21:DOUT", "pico:GND.8", "black", [ "h-19.2", "v219.9", "h67.2", "v-9.6" ] ]
+    [ "rgb21:DOUT", "pico:GND.8", "black", [ "h-19.2", "v219.9", "h67.2", "v-9.6" ] ],
+    [ "keypad1:R2", "pico:GP17", "green", [ "v249.6", "h297.2", "v-38.4" ] ],
+    [ "keypad1:R1", "pico:GP16", "green", [ "v259.2", "h316.8", "v-38.4" ] ],
+    [ "keypad1:R3", "pico:GP18", "green", [ "v268.8", "h306.9", "v-9.6" ] ],
+    [ "keypad1:R4", "pico:GP19", "green", [ "v278.4", "h307", "v-86.4" ] ],
+    [ "keypad1:C1", "pico:GP20", "green", [ "v288", "h316.7", "v-105.6", "h0", "v-9.6" ] ],
+    [ "keypad1:C2", "pico:GP4", "green", [ "v0" ] ],
+    [ "keypad1:C3", "pico:GP8", "green", [ "v0" ] ],
+    [ "pico:GP9", "keypad1:C4", "green", [ "h0" ] ]
   ],
   "dependencies": {}
 }

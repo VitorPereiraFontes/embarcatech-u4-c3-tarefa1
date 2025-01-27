@@ -15,46 +15,46 @@ Animacao obter_anim_coracao_pulsante() {
 
     // Frame 1: Coração apagado
     Matriz_leds_config frame1 = {
-        {off, off, vermelho_apagado, off, off},
-        {off, vermelho_apagado, vermelho_apagado, vermelho_apagado, off},
-        {vermelho_apagado, vermelho_apagado, vermelho_apagado, vermelho_apagado, vermelho_apagado},
-        {off, vermelho_apagado, vermelho_apagado, vermelho_apagado, off},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
         {off, off, vermelho_apagado, off, off}
     };
 
     // Frame 2: Coração intermediário
     Matriz_leds_config frame2 = {
-        {off, off, vermelho_fade, off, off},
-        {off, vermelho_fade, vermelho_fade, vermelho_fade, off},
-        {vermelho_fade, vermelho_fade, vermelho_fade, vermelho_fade, vermelho_fade},
-        {off, vermelho_fade, vermelho_fade, vermelho_fade, off},
-        {off, off, vermelho_fade, off, off}
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {off, off, vermelho_apagado, off, off}
     };
 
     // Frame 3: Coração brilhante
     Matriz_leds_config frame3 = {
-        {off, off, vermelho_brilhante, off, off},
-        {off, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, off},
-        {vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante},
-        {off, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, off},
-        {off, off, vermelho_brilhante, off, off}
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {off, off, vermelho_apagado, off, off}
     };
 
     // Frame 4: Coração ainda mais brilhante
     Matriz_leds_config frame4 = {
-        {off, off, vermelho_brilhante, off, off},
-        {off, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, off},
-        {vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante},
-        {off, vermelho_brilhante, vermelho_brilhante, vermelho_brilhante, off},
-        {off, off, vermelho_brilhante, off, off}
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {off, off, vermelho_apagado, off, off}
     };
 
     // Frame 5: Coração apagando
     Matriz_leds_config frame5 = {
-        {off, off, vermelho_apagado, off, off},
-        {off, vermelho_apagado, vermelho_apagado, vermelho_apagado, off},
-        {vermelho_apagado, vermelho_apagado, vermelho_apagado, vermelho_apagado, vermelho_apagado},
-        {off, vermelho_apagado, vermelho_apagado, vermelho_apagado, off},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
         {off, off, vermelho_apagado, off, off}
     };
 

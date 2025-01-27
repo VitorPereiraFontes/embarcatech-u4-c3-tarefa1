@@ -22,6 +22,8 @@ char get_key() {
         // Ativa a linha atual
         gpio_put(rowPins[row], 0);
 
+        // Se for usar a placa tirar o sleep do comentario
+        //sleep_ms(50);
         for (int col = 0; col < COL_NUM; col++) {
             // Verifica se a coluna está em nível baixo (tecla pressionada)
             if (gpio_get(colPins[col]) == 0) {
