@@ -24,11 +24,11 @@ Animacao obter_anim_coracao_pulsante() {
 
     // Frame 2: Coração intermediário
     Matriz_leds_config frame2 = {
-        {off, vermelho_brilhante, off, vermelho_brilhante, off},
-        {vermelho_brilhante, off, vermelho_brilhante, off, vermelho_brilhante},
-        {vermelho_brilhante, off, off, off, vermelho_brilhante},
-        {off, vermelho_brilhante, off, vermelho_brilhante, off},
-        {off, off, vermelho_brilhante, off, off}
+        {off, vermelho_fade, off, vermelho_fade, off},
+        {vermelho_fade, off, vermelho_fade, off, vermelho_fade},
+        {vermelho_fade, off, off, off, vermelho_fade},
+        {off, vermelho_fade, off, vermelho_fade, off},
+        {off, off, vermelho_fade, off, off}
     };
 
     // Frame 3: Coração brilhante
@@ -42,11 +42,11 @@ Animacao obter_anim_coracao_pulsante() {
 
     // Frame 4: Coração ainda mais brilhante
     Matriz_leds_config frame4 = {
-        {off, vermelho_brilhante, off, vermelho_brilhante, off},
-        {vermelho_brilhante, off, vermelho_brilhante, off, vermelho_brilhante},
-        {vermelho_brilhante, off, off, off, vermelho_brilhante},
-        {off, vermelho_brilhante, off, vermelho_brilhante, off},
-        {off, off, vermelho_brilhante, off, off}
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {vermelho_apagado, off, vermelho_apagado, off, vermelho_apagado},
+        {vermelho_apagado, off, off, off, vermelho_apagado},
+        {off, vermelho_apagado, off, vermelho_apagado, off},
+        {off, off, vermelho_apagado, off, off}
     };
 
     // Frame 5: Coração apagando
