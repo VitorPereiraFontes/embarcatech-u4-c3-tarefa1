@@ -15,7 +15,7 @@ static const char keys[ROW_NUM][COL_NUM] = {
 
 // Pinos de linhas e colunas do teclado
 static const int rowPins[ROW_NUM] = {16, 17, 18, 19};
-static const int colPins[COL_NUM] = {20, 4, 8,9};
+static const int colPins[COL_NUM] = {20, 4, 9, 8};
 
 // Função para configurar os pinos do teclado
 void setup_keypad();
