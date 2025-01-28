@@ -20,5 +20,6 @@ Animacao obter_anim_blue();
 Animacao obter_anim_red();
 Animacao obter_anim_green();
 Animacao obter_anim_white();
+Animacao obter_anim_onda_luz();
 
 #endif

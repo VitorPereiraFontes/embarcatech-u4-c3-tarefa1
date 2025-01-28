@@ -25,7 +25,7 @@ int main() {
 
     Animacao anim_padrao = obter_anim_padrao();
 
-    Animacao animacoes[8];
+    Animacao animacoes[9];
     animacoes[0] = obter_anim_fogos_artificio();
     animacoes[1] = obter_anim_cobra();
     animacoes[2] = obter_anim_coracao_pulsante();
@@ -34,6 +34,7 @@ int main() {
     animacoes[5] = obter_anim_red();
     animacoes[6] = obter_anim_green();
     animacoes[7] = obter_anim_white();
+    animacoes[8] = obter_anim_onda_luz();
 
     double brilho = 1.0;
     size_t contador = 0;
@@ -73,6 +74,13 @@ int main() {
             case '3':
                 printf("\nTrocando para a animação do coração pulsante...\n");
                 anim_atual = &animacoes[2];
+                contador = 0;
+                brilho = 1.0;
+            break;
+
+            case '4':
+                printf("\nTrocando para a animação da onda de luz...\n");
+                anim_atual = &animacoes[8];
                 contador = 0;
                 brilho = 1.0;
             break;
