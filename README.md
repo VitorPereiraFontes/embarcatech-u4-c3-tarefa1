@@ -2,6 +2,8 @@
 
 Este projeto utiliza o microcontrolador **Raspberry Pi Pico** para controlar uma matriz de LEDs 5x5 (WS2812) e interagir com um teclado matricial 4x4. O sistema permite a execução de animações dinâmicas e ajustes personalizados.
 
+**Link do vídeo**: https://drive.google.com/file/d/1JLAxEA6uAWYvARp5PElJcDKqynT9dAUg/view
+
 ---
 
 ##  Recursos
